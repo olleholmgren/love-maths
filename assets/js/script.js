@@ -6,12 +6,12 @@ document.addEventListener("DOMContentLoaded", function() {
     for (let button of buttons) {
         button.addEventListener("click", function() {
             if (this.getAttribute("data-type") === "submit") {
-                alert("You clicked Submit")
+                alert("You clicked Submit!");
             } else {
                 let gameType = this.getAttribute("data-type");
                 runGame(gameType);
             }
-        } )
+        });
     }
 
     runGame("addition");
@@ -28,8 +28,8 @@ function runGame(gameType) {
     let num1 = Math.floor(Math.random() * 25) + 1;
     let num2 = Math.floor(Math.random() * 25) + 1;
 
-    if (gameType === "additiom") {
-        displayAdditionQuestion(num1, num2)
+    if (gameType === "addition") {
+        displayAdditionQuestion(num1, num2);
     } else {
         alert(`Unknown game type: ${gameType}`);
         throw `Unknown game type: ${gameType}. Aborting!`;
@@ -46,19 +46,18 @@ function checkAnswer() {
  * directly for the DOm, and returnes the correct answer.
  */
 function calculateCorrectAnswer() {
-    let operand1 = parseInt(document.getAnimations.getElementById('operand1').innertext);
-    let operand2 = parseInt(document.getAnimations.getElementById('operand2').innertext):
-    let operator = document.getElementById("operator").innerText
+    let operand1 = parseInt(document.getAnimations.getElementById("operand1").innertext);
+    let operand2 = parseInt(document.getAnimations.getElementById("operand2").innertext);
+    let operator = document.getElementById("operator").innerText;
 
     if (operator === "+") {
         return [operand1 + operand2, "addition"];
     } else {
         alert(`Unimplemented operator ${operator}`);
-        throw `Unimple mented operator ${operator}. Aborting!`;
+        throw `Unimplemented operator ${operator}. Aborting!`;
     }
     }
 
-s
 
 function incrementScore() {
 
@@ -69,10 +68,9 @@ function incrementWrongAnswer() {
 }
 
 function displayAdditionQuestion(operand1, operand2) {
-
     document.getElementById("operand1").textContent = operand1;
     document.getElementById("operand2").textContent = operand2;
-    document.getElementById("operatoe").textContent = "+";
+    document.getElementById("operator").textContent = "+";
 
 }
 
