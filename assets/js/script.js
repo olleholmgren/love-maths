@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     for (let button of buttons) {
         button.addEventListener("click", function() {
             if (this.getAttribute("data-type") === "submit") {
-                alert("You clicked Submit!");
+                checkAnswer();
             } else {
                 let gameType = this.getAttribute("data-type");
                 runGame(gameType);
@@ -16,11 +16,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     runGame("addition");
 
-} )
+} );
 
 /**
  * The main game "loop", called when the script is first loaded
- * and after the user"s answer has been processed
+ * and after the user's answer has been processed
  */
 function runGame(gameType) {
 
@@ -35,9 +35,26 @@ function runGame(gameType) {
         throw `Unknown game type: ${gameType}. Aborting!`;
     }
 
+
 }
 
+/**
+ * Check the answer agains the first element in
+ * the returned calculateCorrectAnswer array
+ */
 function checkAnswer() {
+
+    let userAnswer = parseInt(document.getElementById("answer-box").value);
+    let calculatedAnswer = calculateCorrectAnswer();
+    let isCorrect = userAnswer === calculatedAnswer[0];
+
+    if (isCorrect) {
+        alert("Hey! You got it right! :D");
+    } else {
+        alert(`Awwww.... you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`);
+    }
+
+    runGame(calculatedAnswer[1]);
 
 }
 
@@ -46,8 +63,8 @@ function checkAnswer() {
  * directly for the DOm, and returnes the correct answer.
  */
 function calculateCorrectAnswer() {
-    let operand1 = parseInt(document.getAnimations.getElementById("operand1").innertext);
-    let operand2 = parseInt(document.getAnimations.getElementById("operand2").innertext);
+    let operand1 = parseInt(document.getElementById("operand1").innerText);
+    let operand2 = parseInt(document.getElementById("operand2").innerText);
     let operator = document.getElementById("operator").innerText;
 
     if (operator === "+") {
@@ -56,7 +73,7 @@ function calculateCorrectAnswer() {
         alert(`Unimplemented operator ${operator}`);
         throw `Unimplemented operator ${operator}. Aborting!`;
     }
-    }
+}
 
 
 function incrementScore() {
